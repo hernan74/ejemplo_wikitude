@@ -1,0 +1,18 @@
+[
+    {
+        "category_name": "Multiple Targets",
+        "samples": [
+            {
+                "name": "Multiple Targets",
+                "path": "03_MultipleTargets_1_MultipleTargets/index.html",
+                "requiredFeatures": [
+                    "image_tracking"
+                ],
+                "startupConfiguration": {
+                    "camera_position": "back",
+                    "camera_resolution": "auto"
+                }
+            }
+        ]
+    }
+]
