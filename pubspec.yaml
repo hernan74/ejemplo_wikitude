@@ -30,8 +30,23 @@ flutter:
   uses-material-design: true
   assets:
     - samples/
-    - samples/03_MultipleTargets_1_MultipleTargets/
-    - samples/03_MultipleTargets_1_MultipleTargets/js/
-    - samples/03_MultipleTargets_1_MultipleTargets/css/
-    - samples/03_MultipleTargets_1_MultipleTargets/assets/
-    - samples/03_MultipleTargets_1_MultipleTargets/assets/models/
+    - samples/ImageTracking_Interactivity/
+    - samples/ImageTracking_Interactivity/js/
+    - samples/ImageTracking_Interactivity/css/
+    - samples/ImageTracking_Interactivity/assets/
+
+    - samples/Modelo_3d_Animado/
+    - samples/Modelo_3d_Animado/js/
+    - samples/Modelo_3d_Animado/css/
+    - samples/Modelo_3d_Animado/assets/
+
+    - samples/Multiples_Objetivos/
+    - samples/Multiples_Objetivos/js/
+    - samples/Multiples_Objetivos/css/
+    - samples/Multiples_Objetivos/assets/
+    - samples/Multiples_Objetivos/assets/models/
+
+    - samples/Video_en_Imagen/
+    - samples/Video_en_Imagen/js/
+    - samples/Video_en_Imagen/css/
+    - samples/Video_en_Imagen/assets/

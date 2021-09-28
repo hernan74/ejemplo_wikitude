@@ -1,12 +1,60 @@
 [
     {
-        "category_name": "Multiple Targets",
+        "category_name": "Seguimiento de Imágenes",
         "samples": [
             {
-                "name": "Multiple Targets",
-                "path": "03_MultipleTargets_1_MultipleTargets/index.html",
+                "name": "Reconocimiento de imagen con incorporacion de cuestionario",
+                "path": "ImageTracking_Interactivity/index.html",
                 "requiredFeatures": [
                     "image_tracking"
+                ],
+                "startupConfiguration": {
+                    "camera_position": "back",
+                    "camera_resolution": "auto"
+                }
+            }
+        ]
+    },
+    {
+        "category_name": "Multiples Objetivos",
+        "samples": [
+            {
+                "name": "Reconocimiento de multiples objetivos simultaneos",
+                "path": "Multiples_Objetivos/index.html",
+                "requiredFeatures": [
+                    "image_tracking"
+                ],
+                "startupConfiguration": {
+                    "camera_position": "back",
+                    "camera_resolution": "auto"
+                }
+            }
+        ]
+    },
+    {
+        "category_name": "Video en imagen",
+        "samples": [
+            {
+                "name": "Muestra un video sobre la imagen",
+                "path": "Video_en_Imagen/index.html",
+                "requiredFeatures": [
+                    "image_tracking"
+                ],
+                "startupConfiguration": {
+                    "camera_position": "back",
+                    "camera_resolution": "auto"
+                }
+            }
+        ]
+    },
+    {
+        "category_name": "Modelo 3d interactivo",
+        "samples": [
+            {
+                "name": "Modelo 3d con la posibilidad de interactuar",
+                "path": "Modelo_3d_Animado/index.html",
+                "requiredFeatures": [
+                    "object_tracking"
                 ],
                 "startupConfiguration": {
                     "camera_position": "back",
