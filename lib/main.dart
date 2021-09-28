@@ -116,6 +116,7 @@ class _Item extends StatelessWidget {
           children: [
             Text(
               this.titulo,
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: size.height * 0.02, fontWeight: FontWeight.bold),
             ),

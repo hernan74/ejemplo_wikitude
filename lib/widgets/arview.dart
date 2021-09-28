@@ -73,30 +73,46 @@ class ArViewState extends State<ArViewWidget> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(''),
-        ),
         body: SafeArea(
-          child: WillPopScope(
-            onWillPop: () async {
-              if (defaultTargetPlatform == TargetPlatform.android &&
-                  !loadFailed) {
-                bool? canWebViewGoBack =
-                    await this.architectWidget.canWebViewGoBack();
-                if (canWebViewGoBack != null) {
-                  return !canWebViewGoBack;
-                } else {
-                  return true;
-                }
-              } else {
-                return true;
-              }
-            },
-            child: Container(
+      child: WillPopScope(
+        onWillPop: () async {
+          if (defaultTargetPlatform == TargetPlatform.android && !loadFailed) {
+            bool? canWebViewGoBack =
+                await this.architectWidget.canWebViewGoBack();
+            if (canWebViewGoBack != null) {
+              return !canWebViewGoBack;
+            } else {
+              return true;
+            }
+          } else {
+            return true;
+          }
+        },
+        child: Stack(
+          children: [
+            Container(
                 decoration: BoxDecoration(color: Colors.black),
                 child: architectWidget),
-          ),
-        ));
+            IconButton(
+                onPressed: () async {
+                  if (defaultTargetPlatform == TargetPlatform.android &&
+                      !loadFailed) {
+                    bool? canWebViewGoBack =
+                        await this.architectWidget.canWebViewGoBack();
+                    if (canWebViewGoBack != null) {
+                      if (!canWebViewGoBack) Navigator.of(context).pop();
+                    } else {
+                      Navigator.of(context).pop();
+                    }
+                  } else {
+                    Navigator.of(context).pop();
+                  }
+                },
+                icon: Icon(Icons.arrow_back_ios_new_rounded)),
+          ],
+        ),
+      ),
+    ));
   }
 
   Future<void> onArchitectWidgetCreated() async {

@@ -27,7 +27,7 @@ var World = {
             Each target in the target collection is identified by its target name. By using this
             target name, it is possible to create an AR.ImageTrackable for every target in the target collection.
          */
-        this.targetCollectionResource = new AR.TargetCollectionResource("assets/tracker.wtc", {
+        this.targetCollectionResource = new AR.TargetCollectionResource("assets/dinosaurs.wtc", {
             onError: World.onError
         });
 
@@ -57,8 +57,6 @@ var World = {
         /*
             Pre-load models such that they are available in cache to avoid any slowdown upon first recognition.
          */
-        new AR.Model("assets/models/roble.wt3");
-        new AR.Model("assets/models/botella.wt3");
         new AR.Model("assets/models/diplodocus.wt3");
         new AR.Model("assets/models/spinosaurus.wt3");
         new AR.Model("assets/models/triceratops.wt3");

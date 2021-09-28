@@ -1,9 +1,9 @@
 [
     {
-        "category_name": "Seguimiento de Imágenes",
+        "category_name": "Reconocimiento de Imágenes",
         "samples": [
             {
-                "name": "Reconocimiento de imagen con incorporacion de cuestionario",
+                "name": "Reconocimiento de imagen con boton para abrir formulario",
                 "path": "ImageTracking_Interactivity/index.html",
                 "requiredFeatures": [
                     "image_tracking"
@@ -35,7 +35,7 @@
         "category_name": "Video en imagen",
         "samples": [
             {
-                "name": "Muestra un video sobre la imagen",
+                "name": "Muestra para reproducir un video en base a una imagen",
                 "path": "Video_en_Imagen/index.html",
                 "requiredFeatures": [
                     "image_tracking"
