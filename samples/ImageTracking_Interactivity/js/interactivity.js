@@ -2,7 +2,41 @@ var World = {
     loaded: false,
     tracker: null,
     cloudRecognitionService: null,
-
+    rotating: false,
+    snapped: false,
+    interactionContainer: 'snapContainer',
+    layout: {
+        normal: {
+            offsetX: 0.35,
+            offsetY: 0.45,
+            opacity: 0.0,
+            carScale: 0.045,
+            carTranslateY: 0.05
+        },
+        snapped: {
+            offsetX: 0.45,
+            offsetY: 0.45,
+            opacity: 0.2,
+            carScale: 0.08,
+            carTranslateY: 0
+        }
+    },
+    previousDragValue: {
+        x: 0,
+        y: 0
+    },
+    previousScaleValue: 0,
+    previousScaleValueButtons: 0,
+    previousRotationValue: 0,
+    previousTranslateValueRotate: {
+        x: 0,
+        y: 0
+    },
+    previousTranslateValueSnap: {
+        x: 0,
+        y: 0
+    },
+    defaultScale: 0,
     init: function initFn() {
         this.createTracker();
         this.createOverlays();
@@ -54,7 +88,19 @@ var World = {
             }
             if ("3d" == response.metadata.tipo) {
                 if (response.metadata.nombre == "car") {
+                    var imgRotate = new AR.ImageResource("assets/rotateButton.png", {
+                        onError: World.onError
+                    });
+                    this.buttonRotate = new AR.ImageDrawable(imgRotate, 0.2, {
+                        translate: {
+                            x: 0.35,
+                            y: 0.45
+                        },
+                        // onClick: World.toggleAnimateModel
+                    });
+
                     this.modelCar = new AR.Model("assets/" + response.metadata.nombre + ".wt3", {
+                        // onClick: World.toggleAnimateModel,
                         onLoaded: World.showInfoBar,
                         onError: World.onError,
                         scale: {
@@ -73,9 +119,11 @@ var World = {
                             z: parseFloat(response.metadata.rotate.z)
                         }
                     });
+
+                    this.rotationAnimation = new AR.PropertyAnimation(this.modelCar, "rotate.z", -25, 335, 10000);
                     World.wineLabelAugmentation = new AR.ImageTrackable(World.tracker, response.targetInfo.name, {
                         drawables: {
-                            cam: [this.modelCar]
+                            cam: [this.modelCar, this.buttonRotate]
                         },
                         onError: World.onError
                     });
@@ -110,7 +158,23 @@ var World = {
             }
         }
     },
+    toggleAnimateModel: function toggleAnimateModelFn() {
+        if (!World.rotationAnimation.isRunning()) {
+            if (!World.rotating) {
+                /* Starting an animation with .start(-1) will loop it indefinitely. */
+                World.rotationAnimation.start(-1);
+                World.rotating = true;
+            } else {
+                /* Resumes the rotation animation */
+                World.rotationAnimation.resume();
+            }
+        } else {
+            /* Pauses the rotation animation */
+            World.rotationAnimation.pause();
+        }
 
+        return false;
+    },
     onRecognitionError: function onRecognitionErrorFn(errorCode, errorMessage) {
         World.cloudRecognitionService.stopContinuousRecognition();
         alert("error code: " + errorCode + " error message: " + JSON.stringify(errorMessage));
